@@ -33,7 +33,6 @@ The Stepper library allows precise control of stepper motors, with support for b
 
 - Control stepper motors using digital or PWM pins.
 - Support for various stepping methods: `SINGLE`, `DOUBLE`, `INTERLEAVE`, `MICROSTEP`.
-- Adjustable speed and torque.
 - Ability to perform continuous movements.
 
 ## Installation
