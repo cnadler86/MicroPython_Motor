@@ -67,7 +67,7 @@ motor = DCMotor(pina=0, pinb=1, freq=50, fast=True)
 Set the motor speed and direction:
 
 ```python
-motor.speed(512)  # Set speed (range: -1023 to 1023)
+motor.speed(-50)  # Set speed (range: -100 to 100)
 ```
 
 Stop the motor:
@@ -93,13 +93,13 @@ Use the `move` method to move the servomotor to a specific angle. Optionally, yo
 ##### Synchronous Movement
 
 ```python
-servo.move(target_angle=90)
+servo.move(90)
 ```
 
 ##### Asynchronous Movement
 
 ```python
-servo.move(target_angle=90, speed=30, async_mode=True)
+servo.move(90, speed=30, async_mode=True)
 ```
 
 #### Checking if the Target is Reached
@@ -134,7 +134,7 @@ servo.detach()
 Create a `Stepper` object by specifying the pins for the coils and, optionally, the number of microsteps.
 
 ```python
-motor = Stepper(ain1=12, ain2=13, bin1=14, bin2=15, microsteps=16)
+motor = Stepper(ain1=12, ain2=13, bin1=14, bin2=15)
 ```
 
 - `ain1`, `ain2`, `bin1`, `bin2`: Pin numbers for coil connections
@@ -197,12 +197,11 @@ motor.release()
 Here is a complete example of using the DCMotor library:
 
 ```python
-from machine import Pin, PWM
-from dc_motor import DCMotor
+from DCMotor import DCMotor
 import time
 
 motor = DCMotor(pina=0, pinb=1, freq=50, fast=True)
-motor.speed(512)  # Set speed
+motor.speed(100)  # Set speed
 time.sleep(5)  # Run for 5 seconds
 motor.stop()  # Stop the motor
 ```
