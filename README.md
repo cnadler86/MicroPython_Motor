@@ -6,28 +6,26 @@ This repository provides libraries for controlling DC motors, servomotors, and s
 
 ### DCMotor Library
 
-The DCMotor library provides a simple interface to control a DC motor using PWM (Pulse Width Modulation) signals. It supports both fast and slow decay modes and allows setting the motor speed and direction.
+The DCMotor library provides a simple interface to control a DC motor using PWM signals.
 
 ### Servo Library
 
-The Servo library offers an easy way to control servomotors, with support for various microcontroller platforms and functionality for both synchronous and asynchronous movement.
+The Servo library offers an easy way to control servomotors, with support for both synchronous and asynchronous movement.
 
 ### Stepper Library
 
-The Stepper library allows precise control of stepper motors. It supports both digital and PWM pins, various stepping methods including microstepping, and offers adjustable speed and torque.
+The Stepper library allows precise control of stepper motors.
 
 ## Features
 
 ### DCMotor Library
 
 - Control motor speed and direction using two PWM pins.
-- Supports both 10-bit and 16-bit PWM resolution.
 - Fast and slow decay modes.
 
 ### Servo Library
 
 - Control servomotor angles with optional speed and asynchronous movement.
-- Supports both 10-bit and 16-bit PWM resolution.
 
 ### Stepper Library
 
@@ -35,7 +33,6 @@ The Stepper library allows precise control of stepper motors. It supports both d
 - Support for various stepping methods: `SINGLE`, `DOUBLE`, `INTERLEAVE`, `MICROSTEP`.
 - Adjustable speed and torque.
 - Ability to perform continuous movements.
-- Supports both `duty` and `duty_u16` methods for PWM.
 
 ## Installation
 
@@ -48,9 +45,8 @@ Ensure you have MicroPython installed on your microcontroller. Upload the releva
 First, import the required libraries:
 
 ```python
-from machine import Pin, PWM
-from dc_motor import DCMotor  # Assuming you saved the class in a file named dc_motor.py
-from servo import Servo      # Assuming you saved the class in a file named servo.py
+from DCMotor import DCMotor
+from Servo import Servo
 from Stepper import Stepper
 ```
 
