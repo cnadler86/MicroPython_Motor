@@ -103,7 +103,7 @@ class Servo:
         self._move_thread_running = False
         self._set_duty(0)
 
-    def detach(self):
+    def release(self):
         """
         Detaches the servo.
         """
