@@ -124,7 +124,7 @@ servo.stop()
 Use the `detach` method to detach the servomotor.
 
 ```python
-servo.detach()
+servo.release()
 ```
 
 ### Stepper Library
