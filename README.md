@@ -152,7 +152,7 @@ motor.onestep(direction=FORWARD, style=SINGLE)
 #### Performing Steps
 
 ```python
-motor.step(steps=200, direction=FORWARD, style=SINGLE, rpm=60)
+motor.step(200, direction=FORWARD, style=SINGLE, rpm=60)
 ```
 
 - `steps`: Number of steps to perform
@@ -163,7 +163,7 @@ motor.step(steps=200, direction=FORWARD, style=SINGLE, rpm=60)
 #### Angle-Based Steps
 
 ```python
-motor.angle(angle=90, direction=FORWARD, style=SINGLE, rpm=60)
+motor.angle(90, direction=FORWARD, style=SINGLE, rpm=60)
 ```
 
 - `angle`: Angle in degrees
