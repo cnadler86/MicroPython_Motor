@@ -8,7 +8,7 @@ Most libraries out there only support basic movements, but here you will find mo
 
 ### DCMotor Library
 
-The DCMotor library provides a simple interface to control a DC motor using PWM signals.
+The DCMotor library provides a simple interface to control a DC motor using PWM signals, with support for both synchronous and asynchronous movement.
 
 ### Servo Library
 
@@ -16,7 +16,7 @@ The Servo library offers an easy way to control servomotors, with support for bo
 
 ### Stepper Library
 
-The Stepper library allows precise control of stepper motors.
+The Stepper library allows precise control of stepper motors, with support for both synchronous and asynchronous movement.
 
 ## Features
 
