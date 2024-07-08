@@ -1,6 +1,7 @@
 # Motor Control Libraries
 
 This repository provides libraries for controlling DC motors, servomotors, and stepper motors with MicroPython on various microcontroller platforms.
+
 Most libraries out there only support basic movements, but here you will find more advance functionalities such as controlling the speed of the servo or moving the motors with the ability to perform other stuff (async-movement).
 
 ## Overview
