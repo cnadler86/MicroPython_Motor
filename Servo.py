@@ -35,13 +35,14 @@ class Servo:
         """
         Determines whether to use duty or duty_u16 based on platform support.
         """
-        try:
-            self._servo.duty_u16(0)  # Try to set duty_u16 to see if it's supported
+        if hasattr(self._servo, "duty_u16"):
             self._set_duty = self._servo.duty_u16
-            self._duty_factor = 65535 / ((self._pulse_max * self._freq / 1000) * 65535)
-        except AttributeError:
+            self._duty_factor = 65535 / (1000 / self._freq)
+
+        else:
             self._set_duty = self._servo.duty
-            self._duty_factor = 1023 / ((self._pulse_max * self._freq / 1000) * 1023)
+            self._duty_factor = 1023 / (1000 / self._freq)
+
 
     def move(self, target_angle, speed=None, async_mode=False):
         """
@@ -116,8 +117,8 @@ class Servo:
         :param angle: The angle in degrees.
         :return: The duty cycle.
         """
-        pulse_width = self._pulse_min + (angle / self._max_angle) * (self._pulse_max - self._pulse_min)
-        duty_cycle = int(pulse_width * self._freq / 1000 * self._duty_factor)
+        pulse_width = self._pulse_min + (angle / (self._max_angle - self._min_angle)) * (self._pulse_max - self._pulse_min)
+        duty_cycle = int(pulse_width * self._duty_factor)
         return duty_cycle
     
     def _update_angle(self):
