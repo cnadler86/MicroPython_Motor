@@ -31,9 +31,9 @@ Most libraries out there only support basic movements, but here you will find mo
     - [Stop Movement](#stop-movement)
     - [Release Coils](#release-coils)
 - [Examples](#examples)
-- [DCMotor Example](#dcmotor-example)
-- [Servo Example](#servo-example)
-- [Stepper Example](#stepper-example)
+  - [DCMotor Example](#dcmotor-example)
+  - [Servo Example](#servo-example)
+  - [Stepper Example](#stepper-example)
 
 ## Overview
 
