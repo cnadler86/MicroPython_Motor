@@ -220,8 +220,6 @@ motor.release()
 
 ### DCMotor Example
 
-Here is a complete example of using the DCMotor library:
-
 ```python
 from DCMotor import DCMotor
 import time
@@ -234,8 +232,6 @@ motor.stop()  # Stop the motor
 
 ### Servo Example
 
-Here is a complete example of using the Servo library:
-
 ```python
 from servo import Servo
 import time
@@ -247,8 +243,6 @@ servo.stop()
 ```
 
 ### Stepper Example
-
-Here is a complete example of using the Stepper library:
 
 ```python
 from Stepper import Stepper
