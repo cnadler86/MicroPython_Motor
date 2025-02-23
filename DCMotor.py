@@ -105,6 +105,9 @@ class DCMotor:
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
-        """Releases the PWM resources."""
+        self._pwm_a.deinit()
+        self._pwm_b.deinit()
+
+    def __del__(self):
         self._pwm_a.deinit()
         self._pwm_b.deinit()

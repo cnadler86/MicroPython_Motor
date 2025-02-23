@@ -4,40 +4,66 @@ Libraries for controlling DC motors, servomotors, and stepper motors with MicroP
 
 Most libraries out there only support basic movements, but here you will find more advance functionalities such as controlling the speed of the servo or moving the motors with the ability to perform other stuff (async-movement).
 
+- [Overview](#overview)
+- [DCMotor Library](#dcmotor-library)
+- [Servo Library](#servo-library)
+- [Stepper Library](#stepper-library)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Importing the Libraries](#importing-the-libraries)
+- [DCMotor Library](#dcmotor-library-1)
+    - [Initialization](#initialization)
+    - [Controlling the Motor](#controlling-the-motor)
+- [Servo Library](#servo-library-1)
+    - [Initialization](#initialization-1)
+    - [Moving the Servomotor](#moving-the-servomotor)
+    - [Synchronous Movement](#synchronous-movement)
+    - [Asynchronous Movement](#asynchronous-movement)
+    - [Checking if the Target is Reached](#checking-if-the-target-is-reached)
+    - [Stopping the Servomotor](#stopping-the-servomotor)
+    - [Detaching the Servomotor](#detaching-the-servomotor)
+- [Stepper Library](#stepper-library-1)
+    - [Initialization](#initialization-2)
+    - [Single Step](#single-step)
+    - [Performing Steps](#performing-steps)
+    - [Angle-Based Steps](#angle-based-steps)
+    - [Continuous Movement](#continuous-movement)
+    - [Stop Movement](#stop-movement)
+    - [Release Coils](#release-coils)
+- [Examples](#examples)
+- [DCMotor Example](#dcmotor-example)
+- [Servo Example](#servo-example)
+- [Stepper Example](#stepper-example)
+
 ## Overview
 
 ### DCMotor Library
 
-The DCMotor library provides a simple interface to control a DC motor using PWM signals, with support for both synchronous and asynchronous movement.
+The dcmotor library provides a simple interface to control a DC motor using PWM signals, with support for  synchronous and asynchronous movement.
 
-### Servo Library
-
-The Servo library offers an easy way to control servomotors, with support for both synchronous and asynchronous movement.
-
-### Stepper Library
-
-The Stepper library allows precise control of stepper motors, with support for both synchronous and asynchronous movement.
-
-## Features
-
-### DCMotor Library
-
+**Fearures:**
 - Control motor speed and direction using two PWM pins.
 - Fast and slow decay modes.
 
 ### Servo Library
 
+The servo library offers an easy way to control servomotors, with support for synchronous and asynchronous movement.
+
+**Fearures:**
 - Control servomotor angles with optional speed and asynchronous movement.
 
 ### Stepper Library
 
+The stepper library allows precise control of stepper motors, with support for synchronous and asynchronous movement.
+
+**Features:**
 - Control stepper motors using digital or PWM pins.
 - Support for various stepping methods: `SINGLE`, `DOUBLE`, `INTERLEAVE`, `MICROSTEP`.
 - Ability to perform continuous movements.
 
 ## Installation
 
-Ensure you have MicroPython installed on your microcontroller. Upload the relevant Python files (`dc_motor.py`, `servo.py`, `Stepper.py`) to your microcontroller.
+Ensure you have MicroPython installed on your microcontroller. Upload the relevant Python files (`dcmotor.py`, `servo.py`, `stepper.py`) to your microcontroller.
 
 ## Usage
 
@@ -46,9 +72,9 @@ Ensure you have MicroPython installed on your microcontroller. Upload the releva
 First, import the required libraries:
 
 ```python
-from DCMotor import DCMotor
-from Servo import Servo
-from Stepper import Stepper
+from dcmotor import DCMotor
+from servo import Servo
+from stepper import Stepper
 ```
 
 ### DCMotor Library
@@ -233,11 +259,3 @@ motor.step(steps=200, direction=FORWARD, style=SINGLE, rpm=60)  # Move 200 steps
 time.sleep(5)  # Wait for 5 seconds
 motor.stop()  # Stop the motor
 ```
-
-## Supported Platforms
-
-These libraries support platforms that can use `machine.Pin`, `machine.PWM`, and `_thread` modules in MicroPython.
-
-## License
-
-These projects are licensed under the MIT License - see the LICENSE file for details.

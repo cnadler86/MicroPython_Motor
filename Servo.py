@@ -129,3 +129,13 @@ class Servo:
             self._current_angle += self._step
             duty = self._angle_to_duty(self._current_angle)
             self._set_duty(duty)
+
+    def __del__(self):
+        self.release()
+    
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.release()
+        

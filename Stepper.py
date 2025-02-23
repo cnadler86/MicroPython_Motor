@@ -222,3 +222,12 @@ class Stepper:
 
             for i in range(4):
                 self._set_duty(self._coil[i], duty_cycles[i])
+
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.release()
+
+    def __del__(self):
+        self.release()
