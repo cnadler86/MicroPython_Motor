@@ -54,28 +54,28 @@ class Servo:
         """
         if not self._min_angle <= target_angle <= self._max_angle:
             raise ValueError(f"Target angle must be between {self._min_angle} and {self._max_angle}.")
-        
-        if speed is None:
-            self._set_duty(self._angle_to_duty(target_angle))
-            self._target_angle = target_angle
-            self._current_angle = target_angle
-        else:
-            self._step_delay = 1.0 / speed
-            self._target_angle = target_angle
-
-            if self._current_angle < self._target_angle:
-                self._step = 1
+    
+        self._move_thread_running = False
+        with self._lock:
+            if speed is None:
+                self._set_duty(self._angle_to_duty(target_angle))
+                self._target_angle = target_angle
+                self._current_angle = target_angle
             else:
-                self._step = -1
+                self._step_delay = 1.0 / speed
+                self._target_angle = target_angle
 
-            if async_mode:
-                self._move_thread_running = False  # Signal the current thread to stop
-                time.sleep(self._step_delay + 0.1)  # Wait a bit to ensure the thread has stopped
-                _thread.start_new_thread(self._threaded_move, ())
-            else:
-                while self._current_angle != self._target_angle:
-                    self._update_angle()
-                    time.sleep(self._step_delay)
+                if self._current_angle < self._target_angle:
+                    self._step = 1
+                else:
+                    self._step = -1
+
+                if async_mode:
+                    _thread.start_new_thread(self._threaded_move, ())
+                else:
+                    while self._current_angle != self._target_angle:
+                        self._update_angle()
+                        time.sleep(self._step_delay)
 
     def _threaded_move(self):
         """
