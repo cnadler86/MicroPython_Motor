@@ -117,7 +117,9 @@ class Servo:
         :param angle: The angle in degrees.
         :return: The duty cycle.
         """
-        pulse_width = self._pulse_min + (angle / (self._max_angle - self._min_angle)) * (self._pulse_max - self._pulse_min)
+        angle_range = self._max_angle - self._min_angle
+        normalized_angle = (angle - self._min_angle) / angle_range
+        pulse_width = self._pulse_min + normalized_angle * (self._pulse_max - self._pulse_min)
         duty_cycle = int(pulse_width * self._duty_factor)
         return duty_cycle
     
