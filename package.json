@@ -1,8 +1,8 @@
 {
   "urls": [
-    ["dcmotor.py", "github:SergeyPiskunov/MicroPython_Motor/dcmotor.py"],
-    ["servo.py", "github:SergeyPiskunov/MicroPython_Motor/servo.py"],
-    ["stepper.py", "github:SergeyPiskunov/MicroPython_Motor/stepper.py"]
+    ["dcmotor.py", "github:cnadler86/MicroPython_Motor/dcmotor.py"],
+    ["servo.py", "github:cnadler86/MicroPython_Motor/servo.py"],
+    ["stepper.py", "github:cnadler86/MicroPython_Motor/stepper.py"]
   ],
   "version": "1.0.0",
   "deps": []
