@@ -10,8 +10,8 @@ class DCMotor:
         :param freq: The PWM frequency (default: 50 Hz).
         :param fast: Boolean indicating the decay mode (True for fast decay, False for slow decay).
         """
-        self._pwm_a = PWM(Pin(pina), duty=0)
-        self._pwm_b = PWM(Pin(pinb), duty=0)
+        self._pwm_a = PWM(Pin(pina))
+        self._pwm_b = PWM(Pin(pinb))
         self._pwm_a.freq(freq)
         self._pwm_b.freq(freq)
         self._fast_decay = fast
@@ -64,6 +64,10 @@ class DCMotor:
             self.decay = fast
 
         self._set_pwm_duty()
+
+    def stop(self):
+        """Stops the motor by setting speed to 0."""
+        self.speed = 0
 
     def _set_duty_16(self):
         """Sets the PWM duty cycle for 16-bit resolution."""
