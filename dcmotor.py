@@ -58,10 +58,12 @@ class DCMotor:
         :raises ValueError: If speed is not between -100 and 100.
         """
         if speed is not None:
-            self.speed = speed
-        
+            if not -100 <= speed <= 100:
+                raise ValueError("Speed percent must be between -100 and 100")
+            self._speed = speed
+
         if fast is not None:
-            self.decay = fast
+            self._fast_decay = fast
 
         self._set_pwm_duty()
 
@@ -113,5 +115,8 @@ class DCMotor:
         self._pwm_b.deinit()
 
     def __del__(self):
-        self._pwm_a.deinit()
-        self._pwm_b.deinit()
+        try:
+            self._pwm_a.deinit()
+            self._pwm_b.deinit()
+        except Exception:
+            pass

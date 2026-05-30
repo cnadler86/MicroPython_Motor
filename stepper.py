@@ -61,18 +61,19 @@ class Stepper:
                 raise ValueError("Microsteps must be at least 2")
             if microsteps % 2 == 1:
                 raise ValueError("Microsteps must be even")
-            self._curve = [
-                int(round(1023 * math.sin(math.pi / (2 * microsteps) * i)))
-                for i in range(microsteps + 1)
-            ]
 
-            # Determine which duty method to use
+            # Determine which duty method to use before building the curve
             if hasattr(self._coil[0], 'duty_u16'):
                 self._set_duty = lambda coil, value: coil.duty_u16(value)
                 self._duty_max = 65535
             else:
                 self._set_duty = lambda coil, value: coil.duty(value)
                 self._duty_max = 1023
+
+            self._curve = [
+                int(round(self._duty_max * math.sin(math.pi / (2 * microsteps) * i)))
+                for i in range(microsteps + 1)
+            ]
 
         self._current_microstep = 0
         self._microsteps = microsteps
@@ -138,6 +139,7 @@ class Stepper:
         :param async_mode: If True, the function will run in a separate thread
         """
         delay = 1 / (rpm * self.steps_per_rev)
+        self._stop_requested = False
 
         def _step_worker():
             for _ in range(steps):
@@ -173,6 +175,7 @@ class Stepper:
         :param async_mode: If True, the function will run in a separate thread
         """
         delay = 1 / (rpm * self.steps_per_rev)
+        self._stop_requested = False
 
         def _continuous_worker():
             while not self._stop_requested:

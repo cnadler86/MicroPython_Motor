@@ -82,12 +82,14 @@ class Servo:
         Moves the servo in a separate thread to the target angle.
         """
         self._lock.acquire()
-        self._move_thread_running = True
-        while self._current_angle != self._target_angle and self._move_thread_running:
-            self._update_angle()
-            time.sleep(self._step_delay)
-        self._move_thread_running = False
-        self._lock.release()
+        try:
+            self._move_thread_running = True
+            while self._current_angle != self._target_angle and self._move_thread_running:
+                self._update_angle()
+                time.sleep(self._step_delay)
+            self._move_thread_running = False
+        finally:
+            self._lock.release()
 
     def goal_reached(self):
         """
